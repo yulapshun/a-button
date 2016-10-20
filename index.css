@@ -1,0 +1,18 @@
+.btn {
+    display: inline-block;
+    background: #AAAAAA;
+}
+
+.next-btn {
+    background: #FF0000 !important;
+}
+
+#left {
+    height: 200px;
+    width: 45%;
+}
+
+#right {
+    height: 200px;
+    width: 45%;
+}
