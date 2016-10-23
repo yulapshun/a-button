@@ -4,13 +4,18 @@
     <head>
         <title>on99</title>
         <link rel="stylesheet" type="text/css" href="index.css" />
-        <script src="./index.js"></script>
+        <script src="./node_modules/vue/dist/vue.js"></script>
     </head>
     <body>
-        <div id="cps">0</div>
-        <div id="left_count">0</div>
-        <div id="right_count">0</div>
-        <div class="btn next-btn" id="left">left</div>
-        <div class="btn" id="right">right</div>
+        <div id="app">
+            <div>
+                {{ cps }}
+                {{ leftCount }}
+                {{ rightCount }}
+            </div>
+            <div v-on:touchstart="onTouchLeft" class="btn" v-bind:class="leftBtnClass" id="left">left</div>
+            <div v-on:touchstart="onTouchRight" class="btn" v-bind:class="rightBtnClass" id="right">right</div>
+        </div>
     </body>
 </html>
+<script src="./index.js"></script>

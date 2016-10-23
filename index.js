@@ -1,56 +1,55 @@
-(function() {
-    
-    window.onload = function() {
-
-        document.body.addEventListener('touchmove', function(event) {
-            event.preventDefault();
-        }, false);
-
-        var leftCount = 0;
-        var rightCount = 0;
-
-        var startTime = null;
-        var nextClick = 'left';
-
-        var leftBtn = document.querySelector('#left');
-        var rightBtn = document.querySelector('#right');
-        var leftCountDiv = document.querySelector('#left_count');
-        var rightCountDiv = document.querySelector('#right_count');
-        var cpsDiv = document.querySelector('#cps');
-
-        leftBtn.addEventListener('touchstart', function() {
-            if (nextClick !== 'left') {
+var app = new Vue({
+    el: '#app',
+    data: {
+        cps: 0,
+        leftCount: 0,
+        rightCount: 0,
+        nextBtn: 'left',
+        startTime: null
+    },
+    methods: {
+        onTouchLeft: function() {
+            if (this.nextBtn !== 'left') {
                 return;
             }
-            leftCount++;
-            if (!startTime) {
-                startTime = new Date();
+            this.leftCount++;
+            if (!this.startTime) {
+                this.startTime = new Date();
             }
-            var cps = (leftCount + rightCount) / ((new Date() - startTime) / 1000);
+            this.cps = (this.leftCount + this.rightCount) / ((new Date() - this.startTime) / 1000);
 
-            leftCountDiv.innerHTML = leftCount;
-            leftBtn.classList.remove('next-btn');
-            rightBtn.classList.add('next-btn');
-            cpsDiv.innerHTML = cps;
-
-            nextClick = 'right';
-        });
-        rightBtn.addEventListener('touchstart', function() {
-            if (nextClick !== 'right') {
+            this.nextBtn = 'right';
+        },
+        onTouchRight: function() {
+            if (this.nextBtn !== 'right') {
                 return;
             }
-            rightCount++;
-            if (!startTime) {
-                startTime = new Date();
+            this.rightCount++;
+            if (!this.startTime) {
+                this.startTime = new Date();
             }
-            var cps = (leftCount + rightCount) / ((new Date() - startTime) / 1000);
+            this.cps = (this.leftCount + this.rightCount) / ((new Date() - this.startTime) / 1000);
 
-            rightCountDiv.innerHTML = rightCount;
-            leftBtn.classList.add('next-btn');
-            rightBtn.classList.remove('next-btn');
-            cpsDiv.innerHTML = cps;
-
-            nextClick = 'left';
-        });
+            this.nextBtn = 'left';
+        }
+    },
+    computed: {
+        leftBtnClass: function() {
+            return {
+                'next-btn': this.nextBtn === 'left'
+            };
+        },
+        rightBtnClass: function() {
+            return {
+                'next-btn': this.nextBtn === 'right'
+            };
+        }
     }
-})();
+});
+
+
+window.onload = function() {
+    document.body.addEventListener('touchmove', function(event) {
+        event.preventDefault();
+    }, false);
+}
