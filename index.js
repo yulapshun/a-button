@@ -1,48 +1,45 @@
 var app = new Vue({
     el: '#app',
     data: {
+        time: 0,
+        clickCount: 0,
         cps: 0,
-        leftCount: 0,
-        rightCount: 0,
-        nextBtn: 'left',
-        startTime: null
+        startTime: null,
+        interval: null,
+        btnActive: false
     },
     methods: {
-        onTouchLeft: function() {
-            if (this.nextBtn !== 'left') {
-                return;
-            }
-            this.leftCount++;
-            if (!this.startTime) {
-                this.startTime = new Date();
-            }
-            this.cps = (this.leftCount + this.rightCount) / ((new Date() - this.startTime) / 1000);
-
-            this.nextBtn = 'right';
+        reset: function() {
+            this.time = 0;
+            this.clickCount = 0;
+            this.cps = 0;
+            this.startTime = null;
+            clearInterval(this.interval);
+            this.interval = null;
+            this.btnActive = false;
         },
-        onTouchRight: function() {
-            if (this.nextBtn !== 'right') {
-                return;
-            }
-            this.rightCount++;
+        onBtnDown: function(e) {
+            e.preventDefault();
+            this.btnActive = true;
+            this.clickCount++;
             if (!this.startTime) {
-                this.startTime = new Date();
+                var startTime = new Date();
+                this.startTime = startTime;
+                this.interval = setInterval((function() {
+                    this.time = Math.floor((new Date() - startTime) / 1000);
+                }).bind(this), 100);
             }
-            this.cps = (this.leftCount + this.rightCount) / ((new Date() - this.startTime) / 1000);
-
-            this.nextBtn = 'left';
-        }
-    },
-    computed: {
-        leftBtnClass: function() {
-            return {
-                'next-btn': this.nextBtn === 'left'
-            };
+            var elapsedTime = ((new Date() - this.startTime) / 1000);
+            this.cps = elapsedTime < 0.005 ? 0 : ((this.clickCount + this.clickCount) / elapsedTime).toFixed(2);
         },
-        rightBtnClass: function() {
-            return {
-                'next-btn': this.nextBtn === 'right'
-            };
+        onBtnUp: function() {
+            this.btnActive = false;
+        },
+        hihi: function() {
+            this.btnActive = true;
+        },
+        hihi2: function() {
+            this.btnActive = false;
         }
     }
 });

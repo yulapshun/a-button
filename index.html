@@ -6,15 +6,15 @@
         <link rel="stylesheet" type="text/css" href="index.css" />
         <script src="./node_modules/vue/dist/vue.js"></script>
     </head>
-    <body>
+    <body unselectable="on">
         <div id="app">
             <div>
-                {{ cps }}
-                {{ leftCount }}
-                {{ rightCount }}
+                <button v-on:click="reset">reset</button>
+                <div><span>Time: </span>{{ time }}</div>
+                <div><span>Click count: </span>{{ clickCount }}</div>
+                <div><span>Click per second: </span>{{ cps }}</div>
             </div>
-            <div v-on:touchstart="onTouchLeft" class="btn" v-bind:class="leftBtnClass" id="left">left</div>
-            <div v-on:touchstart="onTouchRight" class="btn" v-bind:class="rightBtnClass" id="right">right</div>
+            <div v-on:touchstart="onBtnDown" v-on:touchend="onBtnUp" v-on:mousedown="onBtnDown" v-on:mouseup="onBtnUp" class="btn" v-bind:class="{ active: btnActive }" id="btn"></div>
         </div>
     </body>
 </html>

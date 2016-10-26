@@ -1,18 +1,17 @@
-.btn {
+body {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+#btn {
     display: inline-block;
-    background: #AAAAAA;
-}
-
-.next-btn {
-    background: #FF0000 !important;
-}
-
-#left {
+    background: #FF0000;
     height: 200px;
-    width: 45%;
+    width: 200px;
 }
 
-#right {
-    height: 200px;
-    width: 45%;
+#btn.active {
+    background: #AA0000;
 }
