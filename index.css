@@ -10,6 +10,7 @@ body {
     background: #FF0000;
     height: 200px;
     width: 200px;
+    border-radius: 50%;
 }
 
 #btn.active {
