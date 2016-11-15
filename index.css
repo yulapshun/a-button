@@ -10,14 +10,23 @@ body {
     display: inline-block;
 }
 
+#btn_wrapper {
+    perspective: 300px;
+}
+
 #btn {
     display: inline-block;
     background: #FF0000;
-    height: 200px;
-    width: 200px;
+    height: 230px;
+    width: 230px;
     border-radius: 50%;
+    box-shadow: 0px 5px 0 5px #000000;
+    transform: rotateX(30deg);
+    transition: transform 0.05s;
 }
 
 #btn.active {
-    background: #AA0000;
+    transform: rotateX(30deg) translateZ(-2px) translateY(2px);
+    transition: transform 0.05s ease-out;
 }
+
