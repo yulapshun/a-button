@@ -33,6 +33,9 @@
             },
             onBtnDown: function(e) {
                 e.preventDefault();
+                if (this.btnActive) {
+                    return;
+                }
                 this.btnActive = true;
                 if (!stopped) {
                     this.clickCount++;
