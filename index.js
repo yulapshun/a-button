@@ -9,7 +9,7 @@
     var app = new Vue({
         el: '#app',
         data: {
-            time: 0,
+            time: TIME_LIMIT,
             clickCount: 0,
             cps: 0,
             btnActive: false
@@ -21,7 +21,7 @@
                 time = 0;
                 stopped = false;
 
-                this.time = 0;
+                this.time = TIME_LIMIT;
                 this.clickCount = 0;
                 this.cps = 0;
                 this.btnActive = false;
@@ -51,7 +51,7 @@
             },
             tick: function() {
                 time = new Date() - startTime;
-                this.time = Math.floor(time / 1000);
+                this.time = Math.ceil(TIME_LIMIT - time / 1000);
                 if (time >= TIME_LIMIT * 1000) {
                     this.stop();
                 }
