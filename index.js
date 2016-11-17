@@ -12,7 +12,8 @@
             time: TIME_LIMIT,
             clickCount: 0,
             cps: 0,
-            btnActive: false
+            btnActive: false,
+            showResult: false
         },
         methods: {
             reset: function() {
@@ -25,11 +26,13 @@
                 this.clickCount = 0;
                 this.cps = 0;
                 this.btnActive = false;
+                this.showResult = false;
             },
             stop: function() {
                 clearInterval(interval);
                 interval = null;
                 stopped = true;
+                this.showResult = true;
             },
             onBtnDown: function(e) {
                 e.preventDefault();

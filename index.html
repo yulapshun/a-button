@@ -9,14 +9,19 @@
     </head>
     <body unselectable="on">
         <div id="app">
-            <div>
-                <button v-on:click="reset">reset</button>
-                <div><span>Time: </span>{{ time }}</div>
-                <div><span>Click count: </span>{{ clickCount }}</div>
-                <div><span>Click per second: </span>{{ cps }}</div>
+            <div class="content">
+                <div>
+                    <div id="time"><span></span>{{ time }}</div>
+                    <div id="click_count"><span></span>{{ clickCount }}</div>
+                </div>
+                <div id="btn_wrapper">
+                    <div v-on:touchstart="onBtnDown" v-on:touchend="onBtnUp" v-on:mousedown="onBtnDown" v-on:mouseup="onBtnUp" class="btn" v-bind:class="{ active: btnActive }" id="btn"></div>
+                </div>
             </div>
-            <div id="btn_wrapper">
-                <div v-on:touchstart="onBtnDown" v-on:touchend="onBtnUp" v-on:mousedown="onBtnDown" v-on:mouseup="onBtnUp" class="btn" v-bind:class="{ active: btnActive }" id="btn"></div>
+            <div id="result" v-bind:class="{ show: showResult, hide: !showResult}">
+                <div id="click_count"><span></span>{{ clickCount }}</div>
+                <div id="cps">{{ cps }}</div>
+                <button v-on:click="reset">Restart</button>
             </div>
         </div>
     </body>
