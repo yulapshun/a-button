@@ -36,6 +36,7 @@
                 this.started = false;
                 this.stopped = true;
                 this.showResult = true;
+                this.cps = (this.clickCount * 1000 / time).toFixed(2);
             },
             onBtnDown: function(e) {
                 e.preventDefault();
@@ -51,7 +52,6 @@
                     startTime = new Date();
                     interval = setInterval(this.tick, 100);
                 }
-                this.cps = time < 0.005 ? 0 : (this.clickCount * 1000 / time).toFixed(2);
             },
             onBtnUp: function() {
                 this.btnActive = false;

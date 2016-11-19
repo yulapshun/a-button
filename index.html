@@ -21,9 +21,17 @@
                 </div>
             </div>
             <div id="result" v-bind:class="{ show: showResult, hide: !showResult}">
-                <div id="result_click_count"><span></span>{{ clickCount }}</div>
-                <div id="result_cps">{{ cps }}</div>
-                <button v-on:click="reset">Restart</button>
+                <div class="stat">
+                    <div class="result-section">
+                        <div>clicks</div>
+                        <div id="result_click_count"><span></span>{{ clickCount }}</div>
+                    </div>
+                    <div class="result-section">
+                        <div>clicks/s</div>
+                        <div id="result_cps">{{ cps }}</div>
+                    </div>
+                </div>
+                <img v-on:click="reset" id="restart_btn" src="./restart.svg" alt="Restart" />
             </div>
         </div>
     </body>
