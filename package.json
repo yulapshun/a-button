@@ -1,7 +1,7 @@
 {
-  "name": "on99",
-  "version": "0.0.1",
-  "description": "this is on99",
+  "name": "A Button",
+  "version": "0.1.0",
+  "description": "A button",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yulapshun/on99.git"
+    "url": "git+https://github.com/yulapshun/a-button.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/yulapshun/on99/issues"
+    "url": "https://github.com/yulapshun/a-button/issues"
   },
-  "homepage": "https://github.com/yulapshun/on99#readme",
+  "homepage": "https://github.com/yulapshun/a-button#readme",
   "dependencies": {
     "vue": "^2.0.3"
   }
