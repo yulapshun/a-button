@@ -12,16 +12,17 @@
         <div id="app">
             <div class="content">
                 <div>
-                    <div id="time"><span></span>{{ time }}</div>
-                    <div id="click_count"><span></span>{{ clickCount }}</div>
+                    <div id="click_count">{{ clickCount }}</div>
+                    <div id="time_bar" v-bind:class="{ started: started, stopped: stopped }"></div>
                 </div>
                 <div id="btn_wrapper">
-                    <div v-on:touchstart="onBtnDown" v-on:touchend="onBtnUp" v-on:mousedown="onBtnDown" v-on:mouseup="onBtnUp" class="btn" v-bind:class="{ active: btnActive }" id="btn"></div>
+                    <div v-on:touchstart="onBtnDown" v-on:touchend="onBtnUp" v-on:mousedown="onBtnDown" v-on:mouseup="onBtnUp" class="btn" v-bind:class="{ active: btnActive }" id="btn">
+                    </div>
                 </div>
             </div>
             <div id="result" v-bind:class="{ show: showResult, hide: !showResult}">
-                <div id="click_count"><span></span>{{ clickCount }}</div>
-                <div id="cps">{{ cps }}</div>
+                <div id="result_click_count"><span></span>{{ clickCount }}</div>
+                <div id="result_cps">{{ cps }}</div>
                 <button v-on:click="reset">Restart</button>
             </div>
         </div>

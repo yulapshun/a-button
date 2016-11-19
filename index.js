@@ -4,11 +4,12 @@
     var startTime = null;
     var time = 0;
     var interval = null;
-    var stopped = false;
 
     var app = new Vue({
         el: '#app',
         data: {
+            started: false,
+            stopped: false,
             time: TIME_LIMIT,
             clickCount: 0,
             cps: 0,
@@ -20,8 +21,9 @@
                 this.stop();
                 startTime = null;
                 time = 0;
-                stopped = false;
 
+                this.started = false;
+                this.stopped = false;
                 this.time = TIME_LIMIT;
                 this.clickCount = 0;
                 this.cps = 0;
@@ -31,7 +33,8 @@
             stop: function() {
                 clearInterval(interval);
                 interval = null;
-                stopped = true;
+                this.started = false;
+                this.stopped = true;
                 this.showResult = true;
             },
             onBtnDown: function(e) {
@@ -40,10 +43,11 @@
                     return;
                 }
                 this.btnActive = true;
-                if (!stopped) {
+                if (!this.stopped) {
+                    this.started = true;
                     this.clickCount++;
                 }
-                if (!startTime && !stopped) {
+                if (!startTime && !this.stopped) {
                     startTime = new Date();
                     interval = setInterval(this.tick, 100);
                 }

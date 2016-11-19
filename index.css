@@ -5,6 +5,7 @@ body {
     -ms-user-select: none;
     text-align: center;
     font-family: 'Audiowide', cursive;
+    cursor: default;
 }
 
 #app {
@@ -18,6 +19,23 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%,-70%);
+}
+
+#time_bar {
+    height: 2px;
+    margin-top: 10px;
+    width: 100%;
+    background: #FF0000;
+}
+
+#time_bar.started {
+    width: 0;
+    /* hard code to 30s */
+    transition: width 30s linear;
+}
+
+#time_bar.stopped {
+    width: 0;
 }
 
 #btn_wrapper {
@@ -62,6 +80,5 @@ body {
     bottom: 50%;
     margin-left: -100px;
     margin-bottom: -150px;
-    /* transform: translateY(-50%px); */
     transition: left 0.5s, bottom 0.5s, margin-left 0.5s, margin-bottom 0.5s;
 }
