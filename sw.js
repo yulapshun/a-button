@@ -1,6 +1,6 @@
 self.addEventListener('install', function(e) {
     e.waitUntil(
-        caches.open('a-button-cache')
+        caches.open('a-button-cache-2')
               .then(function(cache) {
                   return cache.addAll([
                       '/',

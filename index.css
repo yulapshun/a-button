@@ -56,7 +56,7 @@ body {
     perspective: 300px;
 }
 
-#btn {
+.btn {
     display: inline-block;
     background: #FF0000;
     height: 230px;
@@ -67,7 +67,24 @@ body {
     transition: transform 0.05s;
 }
 
-#btn.active {
+.btn.active {
+    transform: rotateX(30deg) translateZ(-2px) translateY(2px);
+    transition: transform 0.05s ease-out;
+}
+
+.j {
+    display: inline-block;
+    vertical-align: top;
+    line-height: 230px;
+    font-size: 230px;
+    height: 230px;
+    width: 230px;
+    transform: rotateX(30deg);
+    transition: transform 0.05s;
+    font-family: serif;
+}
+
+.j.active {
     transform: rotateX(30deg) translateZ(-2px) translateY(2px);
     transition: transform 0.05s ease-out;
 }

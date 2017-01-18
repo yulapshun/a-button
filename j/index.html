@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>J?</title>
+        <script src="../node_modules/vue/dist/vue.js"></script>
+        <link rel="stylesheet" type="text/css" href="../index.css" />
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+        <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon">
+        <!-- manifest for android chrome -->
+        <link rel="manifest" href="../manifest.json">
+        <!-- Add to home screen for Safari on iOS -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="white">
+        <meta name="apple-mobile-web-app-title" content="A Button">
+        <link rel="apple-touch-icon" href="images/icon-152x152.png">
+        <!-- windows -->
+        <meta name="msapplication-TileImage" content="../images/icon-144x144.png">
+        <meta name="msapplication-TileColor" content="#FFFFFF">
+    </head>
+    <body unselectable="on">
+        <div id="app">
+            <div class="content">
+                <div class="top">
+                    <div id="click_count">{{ clickCount }}</div>
+                    <div id="time_bar" v-bind:class="{ started: started, stopped: stopped }"></div>
+                </div>
+                <div id="btn_wrapper">
+                    <div v-on:touchstart="onBtnDown" v-on:touchend="onBtnUp" v-on:mousedown="onBtnDown" v-on:mouseup="onBtnUp" class="j" v-bind:class="{ active: btnActive }" id="btn" v-bind:style="{fontSize: jSize + 'px'}">
+                        J
+                    </div>
+                </div>
+            </div>
+            <div id="result" v-bind:class="{ show: showResult, hide: !showResult}">
+                <div class="stat">
+                    <div class="result-section">
+                        <div>clicks</div>
+                        <div id="result_click_count"><span></span>{{ clickCount }}</div>
+                    </div>
+                    <div class="result-section">
+                        <div>clicks/s</div>
+                        <div id="result_cps">{{ cps }}</div>
+                    </div>
+                </div>
+                <img v-on:click="reset" id="restart_btn" src="../restart.svg" alt="Restart" />
+            </div>
+        </div>
+    </body>
+</html>
+<script src="./index.js"></script>
